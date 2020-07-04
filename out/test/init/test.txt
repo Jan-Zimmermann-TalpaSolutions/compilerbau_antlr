@@ -1,0 +1,25 @@
+while:
+
+   ; if local[0] <= 0 goto done
+   iload 0
+   ifle done
+
+
+   ; local[1] = local[0] * local[1]
+   iload 0
+   iload 1
+   imul
+   istore 1
+
+   ; local[0] = local[0] - 1
+   iload 0
+   ldc 1
+   isub
+   istore 0
+
+   goto while
+
+done:
+
+   iload 1
+   ireturn
