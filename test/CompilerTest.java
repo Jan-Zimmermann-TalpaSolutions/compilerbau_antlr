@@ -40,27 +40,27 @@ public class CompilerTest {
     @DataProvider
     public Object[][] provide_code_expectedText() throws Exception {
         return new Object[][]{
-                {"plus", "println(1+2);", "3" + System.lineSeparator()},
-                {"chained plus", "println(1+2+42);", "45" + System.lineSeparator()},
+                {"plus", "zeichma(1+2);", "3" + System.lineSeparator()},
+                {"chained plus", "zeichma(1+2+42);", "45" + System.lineSeparator()},
                 {
-                        "chained println",
-                        "println(1); println(2);",
+                        "chained zeichma",
+                        "zeichma(1); zeichma(2);",
                         "1" + System.lineSeparator() + "2" + System.lineSeparator()
                 },
-                {"minus", "println(3-2);", "1" + System.lineSeparator()},
-                {"mult", "println(2*3);", "6" + System.lineSeparator()},
-                {"div", "println(6/2);", "3" + System.lineSeparator()},
-                {"div_rest", "println(7/2);", "3" + System.lineSeparator()},
-                {"minus_plus", "println(8-2+5);", "11" + System.lineSeparator()},
-                {"mult_div", "println(8/2*4);", "16" + System.lineSeparator()},
-                {"plus_mult", "println(2+3*3);", "11" + System.lineSeparator()},
-                {"minus_mult", "println(9-2*3);", "3" + System.lineSeparator()},
+                {"minus", "zeichma(3-2);", "1" + System.lineSeparator()},
+                {"mult", "zeichma(2*3);", "6" + System.lineSeparator()},
+                {"div", "zeichma(6/2);", "3" + System.lineSeparator()},
+                {"div_rest", "zeichma(7/2);", "3" + System.lineSeparator()},
+                {"minus_plus", "zeichma(8-2+5);", "11" + System.lineSeparator()},
+                {"mult_div", "zeichma(8/2*4);", "16" + System.lineSeparator()},
+                {"plus_mult", "zeichma(2+3*3);", "11" + System.lineSeparator()},
+                {"minus_mult", "zeichma(9-2*3);", "3" + System.lineSeparator()},
 
-                {"var", "int foo; foo = 42; println(foo);", "42" + System.lineSeparator()},
-                {"one var parameter plus","int foo; foo = 42; println(foo+2);", "44" + System.lineSeparator()},
-                {"add two vars parameter","int a; int b; a=2; b=5; println(a+b);", "7" + System.lineSeparator()},
+                {"var", "janzezahl foo; foo = 42; zeichma(foo);", "42" + System.lineSeparator()},
+                {"one var parameter plus","janzezahl foo; foo = 42; zeichma(foo+2);", "44" + System.lineSeparator()},
+                {"add two vars parameter","janzezahl a; janzezahl b; a=2; b=5; zeichma(a+b);", "7" + System.lineSeparator()},
 
-                {"return only function","int randomNumber() { return 4;} println(randomNumber());", "4" + System.lineSeparator()},
+                {"hauraus only function","janzezahl randomNumber() { hauraus 4;} zeichma(randomNumber());", "4" + System.lineSeparator()},
 
                 example("functions/simple_function", "4" + System.lineSeparator() + "42" + System.lineSeparator()),
                 example("functions/scopes", "4" + System.lineSeparator()),
@@ -68,19 +68,18 @@ public class CompilerTest {
                 example("functions/overloading", "0" + System.lineSeparator() + "42" + System.lineSeparator()),
                 example("branches/if_int_false", "42" + System.lineSeparator()),
 
-                example("functions/whileloop", "9" + System.lineSeparator()),
 
-                {"lower than true", "println(1<2);", "1" + System.lineSeparator()},
-                {"lower than false", "println(2<2);", "0" + System.lineSeparator()},
+                {"lower than true", "zeichma(1<2);", "1" + System.lineSeparator()},
+                {"lower than false", "zeichma(2<2);", "0" + System.lineSeparator()},
 
-                {"lower than or equals true", "println(2<=2);", "1" + System.lineSeparator()},
-                {"lower than or equals false", "println(3<=2);", "0" + System.lineSeparator()},
+                {"lower than or equals true", "zeichma(2<=2);", "1" + System.lineSeparator()},
+                {"lower than or equals false", "zeichma(3<=2);", "0" + System.lineSeparator()},
 
-                {"greater than true", "println(3 > 2);", "1" + System.lineSeparator()},
-                {"greater than false", "println(2 > 2);", "0" + System.lineSeparator()},
+                {"greater than true", "zeichma(3 > 2);", "1" + System.lineSeparator()},
+                {"greater than false", "zeichma(2 > 2);", "0" + System.lineSeparator()},
 
-                {"greater than or equals true", "println(2 >= 2);", "1" + System.lineSeparator()},
-                {"greater than or equals false", "println(1 >= 2);", "0" + System.lineSeparator()}
+                {"greater than or equals true", "zeichma(2 >= 2);", "1" + System.lineSeparator()},
+                {"greater than or equals false", "zeichma(1 >= 2);", "0" + System.lineSeparator()}
         };
     }
 
@@ -108,7 +107,7 @@ public class CompilerTest {
     @Test(expectedExceptions = UndeclaredVariableException.class, expectedExceptionsMessageRegExp = "1:8 undeclared variable <x>")
     public void compilingCode_throwsUndeclaredVariableException_ifReadingUndefinedVariable() throws Exception {
         //execution
-        compileAndRun("println(x);");
+        compileAndRun("zeichma(x);");
 
         //evaluation performed by expected exception
     }
@@ -121,11 +120,11 @@ public class CompilerTest {
         //evaluation performed by expected exception
     }
 
-    @Test(expectedExceptions = VariableAlreadyDefinedException.class, expectedExceptionsMessageRegExp = "2:4 variable already definied: <x>")
+    @Test(expectedExceptions = VariableAlreadyDefinedException.class, expectedExceptionsMessageRegExp = "2:10 variable already definied: <x>")
     public void compilingCode_throwsVariableAlreadyDefinedException_whenDefiningAlreadyDefinedVariable() throws Exception {
         //execution
-        compileAndRun("int x;" + System.lineSeparator() +
-                "int x;");
+        compileAndRun("janzezahl x;" + System.lineSeparator() +
+                "janzezahl x;");
 
         //evaluation performed by expected exception
     }
@@ -133,16 +132,16 @@ public class CompilerTest {
     @Test(expectedExceptions = UndefinedFunctionException.class, expectedExceptionsMessageRegExp = "1:8 call to undefined function: <someUndefinedFunction>")
     public void compilingCode_throwsUndefinedFunctionException_whenCallingUndefinedFunction() throws Exception {
         //execution
-        compileAndRun("println(someUndefinedFunction());");
+        compileAndRun("zeichma(someUndefinedFunction());");
 
         //evaluation performed by expected exception
     }
 
-    @Test(expectedExceptions = FunctionAlreadyDefinedException.class, expectedExceptionsMessageRegExp = "2:4 function already defined: <x>")
+    @Test(expectedExceptions = FunctionAlreadyDefinedException.class, expectedExceptionsMessageRegExp = "2:10 function already defined: <x>")
     public void compilingCode_throwsFunctionAlreadyDefinedException_whenCallingAlreadyDefinedFunction() throws Exception {
         //execution
-        compileAndRun("int x() { return 42;}\n" +
-                "int x() { return 42;}");
+        compileAndRun("janzezahl x() { hauraus 42;}\n" +
+                "janzezahl x() { hauraus 42;}");
 
         //evaluation performed by expected exception
     }

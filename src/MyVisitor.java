@@ -10,7 +10,6 @@ public class MyVisitor extends DemoBaseVisitor<String> {
     private final FunctionList definedFunctions;
     private int branchCounter = 0;
     private int compareCount = 0;
-    private int whileCounter = 0;
 
     public MyVisitor(FunctionList definedFunctions) {
         super();
@@ -210,21 +209,6 @@ public class MyVisitor extends DemoBaseVisitor<String> {
                 "ifTrue" + branchNum + ":\n" +
                 onTrueInstructions + "\n" +
                 "endIf" + branchNum + ":\n";
-    }
-
-    @Override
-    public String visitWhile(DemoParser.WhileContext ctx) {
-        String conditionInstruction = visit(ctx.condition);
-        String onTrueInstructions = visit(ctx.onTrue);
-        int whileNum = whileCounter;
-        whileCounter++;
-        return   conditionInstruction + "while"+ whileNum + ":\n" +
-                "ifne onTrue" + whileNum + "\n" +
-                "onTrue" + whileNum + ":\n" +
-                onTrueInstructions + "\n" +
-                visitChildren(ctx) + "\n" +
-                "goto onTrue" + whileNum + "\n" +
-                "onFalse" + whileNum + ":\n";
     }
 
     private int requireVariableIndex(Token varNameToken) {

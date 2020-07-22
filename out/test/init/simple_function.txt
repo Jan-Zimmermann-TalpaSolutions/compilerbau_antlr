@@ -1,9 +1,9 @@
-int randomNumber() {
-  int i;
+janzezahl randomNumber() {
+  janzezahl i;
   i = 4;
-  return i;
+  hauraus i;
 }
-int i;
+janzezahl i;
 i = 42;
-println(randomNumber());
-println(i);
+zeichma(randomNumber());
+zeichma(i);

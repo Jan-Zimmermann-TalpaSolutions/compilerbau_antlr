@@ -1,4 +1,4 @@
-int add(int a, int b) {
-  return a+b;
+janzezahl add(janzezahl a, janzezahl b) {
+  hauraus a+b;
 }
-println(add(5,8));
+zeichma(add(5,8));

@@ -1,5 +1,5 @@
-if(0) {
-   println(81);
-} else {
-  println(42);
+watwenn(0) {
+   zeichma(81);
+} sonstdat {
+  zeichma(42);
 }

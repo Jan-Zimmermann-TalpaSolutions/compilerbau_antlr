@@ -61,18 +61,6 @@ public interface DemoListener extends ParseTreeListener {
 	 */
 	void exitBranch(DemoParser.BranchContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code While}
-	 * labeled alternative in {@link DemoParser#loop}.
-	 * @param ctx the parse tree
-	 */
-	void enterWhile(DemoParser.WhileContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code While}
-	 * labeled alternative in {@link DemoParser#loop}.
-	 * @param ctx the parse tree
-	 */
-	void exitWhile(DemoParser.WhileContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link DemoParser#block}.
 	 * @param ctx the parse tree
 	 */

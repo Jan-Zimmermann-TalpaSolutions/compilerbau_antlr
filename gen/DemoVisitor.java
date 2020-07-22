@@ -42,13 +42,6 @@ public interface DemoVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBranch(DemoParser.BranchContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code While}
-	 * labeled alternative in {@link DemoParser#loop}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWhile(DemoParser.WhileContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link DemoParser#block}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

@@ -1,8 +1,8 @@
-int x() {
-    return 0;
+janzezahl x() {
+    hauraus 0;
 }
-int x(int a) {
-    return a;
+janzezahl x(janzezahl a) {
+    hauraus a;
 }
- println(x());
- println(x(42));
+ zeichma(x());
+ zeichma(x(42));

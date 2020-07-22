@@ -1,5 +1,5 @@
-if(1) {
-    println(81);
-}else{
-    println(42);
+watwenn(1) {
+    zeichma(81);
+}sonstdat{
+    zeichma(42);
 }

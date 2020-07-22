@@ -1,6 +1,6 @@
-int randomNumber() {
-    int i;
+janzezahl randomNumber() {
+    janzezahl i;
     i =4;
-    return i;
+    hauraus i;
 }
-println(randomNumber());
+zeichma(randomNumber());
